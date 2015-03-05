@@ -74,7 +74,7 @@ public:
         morphing->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(morphing);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1520, 25));
+        menuBar->setGeometry(QRect(0, 0, 1520, 20));
         morphing->setMenuBar(menuBar);
         mainToolBar = new QToolBar(morphing);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -98,7 +98,7 @@ public:
         btn_browse_2->setText(QApplication::translate("morphing", "Browse", 0));
         img_result->setText(QString());
         pushButton_2->setText(QApplication::translate("morphing", "PushButton", 0));
-        pushButton->setText(QApplication::translate("morphing", "PushButton", 0));
+        pushButton->setText(QApplication::translate("morphing", "Single Line", 0));
     } // retranslateUi
 
 };
