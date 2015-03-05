@@ -34,7 +34,7 @@ morphing::~morphing()
 void morphing::on_btn_browse_clicked()
 {
     filename = QFileDialog::getOpenFileName(this,
-               tr("Open Image"), "/home/nima/Morphing/", tr("Image Files (*.png *.jpg *.bmp)"));
+               tr("Open Image"), "/home/nima/Morphing/pics/", tr("Image Files (*.png *.jpg *.bmp)"));
      qDebug()<<"Load Image From"<<filename;
      source=imread(filename.toStdString(), CV_LOAD_IMAGE_COLOR);
      proccessImage();
@@ -107,9 +107,6 @@ void morphing::proccessImage(){
     QImage QimageMorphed((uchar*)morphed.data,morphed.cols,morphed.rows,morphed.step,QImage::Format_RGB888);;
     ui->img_result->setPixmap(QPixmap::fromImage(QimageMorphed));
 
-
-
-
 }
 
 
@@ -174,7 +171,6 @@ QPoint morphing::perpendicular(QPoint a){
    float x1;
    float x2;
    QPoint x;
-
    x2=qSqrt((qPow(a.x(),4)+(qPow(a.x(),2)*qPow(a.y(),2)))/(qPow(a.x(),2)+qPow(a.y(),2)));
    if (x2==0){
    x1=(1*a.y()*1)/(1);
@@ -182,7 +178,6 @@ QPoint morphing::perpendicular(QPoint a){
    else {
    x1=(-1*a.y()*x2)/(a.x());
    }
-
    x.setX(x1);
    x.setY(x2);
    return x;
@@ -196,7 +191,7 @@ void morphing::on_btn_browse_2_clicked()
 {
 
     filename = QFileDialog::getOpenFileName(this,
-               tr("Open Image"), "/home/nima/Morphing/", tr("Image Files (*.png *.jpg *.bmp)"));
+               tr("Open Image"), "/home/nima/Morphing/pics", tr("Image Files (*.png *.jpg *.bmp)"));
      qDebug()<<"Load Image From"<<filename;
      destinition=imread(filename.toStdString(), CV_LOAD_IMAGE_COLOR);
      proccessImage();
@@ -311,23 +306,50 @@ QPoint morphing::perpendicularr(QLine pq, QPoint perp) {
   else{
   m = - (pq.p2().x() - pq.p1().x()) / (float) temp , len ;
   }
-
   perp.setY(m*len/sqrt(1+pow(m,2)));
   perp.setX(sqrt(pow(len,2)-pow(perp.y(),2)));
   return perp;
-
 }
 
 QPoint morphing::getXp(float u, float v, QLine pqp, QPoint x, QPoint xp) {
   float len = lineLength(pqp);
   QPoint perp;
-  perp=perpendicular(QPoint(pqp.p2().x()-pqp.p1().x(),pqp.p2().y() - pqp.p1().y()));
- // qDebug()<<"perper"<<perp;
+  //perp=perpendicularr(QPoint(pqp.p2().x()-pqp.p1().x(),pqp.p2().y() - pqp.p1().y()));
+  perp=perpendicularr(pqp,perp);
+  //qDebug()<<"perper"<<perp;
   xp.setX(pqp.p1().x() + u*(pqp.p2().x()-pqp.p1().x()) + (v*(perp.x())) / len);
   xp.setY(pqp.p1().y() + u*(pqp.p2().y()-pqp.p1().y()) + (v*(perp.y())) / len);
   return xp;
 }
 
 
+void morphing::on_pushButton_clicked()
+{
+
+    float u;
+    float v;
+    QPoint x_P;
+
+  for(int i=0;i<500;i++){
+        for(int j=0;j<500;j++){
+            x.setX(j);
+            x.setY(i);
+            p=lines_source.at(0).p1();
+            q=lines_source.at(0).p2();
+            p_P=lines_destination.at(0).p1();
+            q_P=lines_destination.at(0).p2();
+            u=getU(lines_source.at(0),x);
+            v=getV(lines_source.at(0),x);
+            x_P=getXp(u,v,lines_destination.at(0),x,x_P);
+            morphed.at<cv::Vec3b>(i,j)=destinition.at<cv::Vec3b>(x_P.x(),x_P.y());
+            qDebug()<<"X="<<x;
+            qDebug()<<"P="<<p<<", Q="<<q;
+            qDebug()<<"P_Prime="<<p_P<<", Q_Prime="<<q_P;
+            qDebug()<<"u="<<u<<", v="<<v;
+            qDebug()<<x <<"-->"<<x_P;
+        }
+    }
+    proccessImage();
 
 
+}

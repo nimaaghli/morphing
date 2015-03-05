@@ -36,6 +36,8 @@ private slots:
     QPoint perpendicularr(QLine pq, QPoint perp);
     QPoint getXp(float u, float v, QLine pqp, QPoint x, QPoint xp);
 
+    void on_pushButton_clicked();
+
 private:
     Ui::morphing *ui;
     cv::Mat source;

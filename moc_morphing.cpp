@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_morphing_t {
-    QByteArrayData data[30];
-    char stringdata[257];
+    QByteArrayData data[31];
+    char stringdata[279];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -58,7 +58,8 @@ QT_MOC_LITERAL(25, 240, 5), // "getXp"
 QT_MOC_LITERAL(26, 246, 1), // "u"
 QT_MOC_LITERAL(27, 248, 1), // "v"
 QT_MOC_LITERAL(28, 250, 3), // "pqp"
-QT_MOC_LITERAL(29, 254, 2) // "xp"
+QT_MOC_LITERAL(29, 254, 2), // "xp"
+QT_MOC_LITERAL(30, 257, 21) // "on_pushButton_clicked"
 
     },
     "morphing\0on_btn_browse_clicked\0\0"
@@ -68,7 +69,7 @@ QT_MOC_LITERAL(29, 254, 2) // "xp"
     "on_pushButton_2_clicked\0point2LineD\0"
     "x\0pq\0lineLength\0n\0length\0q\0slength\0"
     "getU\0getV\0perpendicularr\0perp\0getXp\0"
-    "u\0v\0pqp\0xp"
+    "u\0v\0pqp\0xp\0on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,7 +79,7 @@ static const uint qt_meta_data_morphing[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -86,21 +87,22 @@ static const uint qt_meta_data_morphing[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   89,    2, 0x08 /* Private */,
-       3,    2,   90,    2, 0x08 /* Private */,
-       7,    0,   95,    2, 0x08 /* Private */,
-       8,    0,   96,    2, 0x08 /* Private */,
-       9,    1,   97,    2, 0x08 /* Private */,
-      11,    0,  100,    2, 0x08 /* Private */,
-      12,    0,  101,    2, 0x08 /* Private */,
-      13,    2,  102,    2, 0x08 /* Private */,
-      16,    1,  107,    2, 0x08 /* Private */,
-      18,    2,  110,    2, 0x08 /* Private */,
-      20,    2,  115,    2, 0x08 /* Private */,
-      21,    2,  120,    2, 0x08 /* Private */,
-      22,    2,  125,    2, 0x08 /* Private */,
-      23,    2,  130,    2, 0x08 /* Private */,
-      25,    5,  135,    2, 0x08 /* Private */,
+       1,    0,   94,    2, 0x08 /* Private */,
+       3,    2,   95,    2, 0x08 /* Private */,
+       7,    0,  100,    2, 0x08 /* Private */,
+       8,    0,  101,    2, 0x08 /* Private */,
+       9,    1,  102,    2, 0x08 /* Private */,
+      11,    0,  105,    2, 0x08 /* Private */,
+      12,    0,  106,    2, 0x08 /* Private */,
+      13,    2,  107,    2, 0x08 /* Private */,
+      16,    1,  112,    2, 0x08 /* Private */,
+      18,    2,  115,    2, 0x08 /* Private */,
+      20,    2,  120,    2, 0x08 /* Private */,
+      21,    2,  125,    2, 0x08 /* Private */,
+      22,    2,  130,    2, 0x08 /* Private */,
+      23,    2,  135,    2, 0x08 /* Private */,
+      25,    5,  140,    2, 0x08 /* Private */,
+      30,    0,  151,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -118,6 +120,7 @@ static const uint qt_meta_data_morphing[] = {
     QMetaType::Float, QMetaType::QLine, QMetaType::QPoint,   15,   14,
     QMetaType::QPoint, QMetaType::QLine, QMetaType::QPoint,   15,   24,
     QMetaType::QPoint, QMetaType::Float, QMetaType::Float, QMetaType::QLine, QMetaType::QPoint, QMetaType::QPoint,   26,   27,   28,   14,   29,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -152,6 +155,7 @@ void morphing::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = _r; }  break;
         case 14: { QPoint _r = _t->getXp((*reinterpret_cast< float(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2])),(*reinterpret_cast< QLine(*)>(_a[3])),(*reinterpret_cast< QPoint(*)>(_a[4])),(*reinterpret_cast< QPoint(*)>(_a[5])));
             if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = _r; }  break;
+        case 15: _t->on_pushButton_clicked(); break;
         default: ;
         }
     }
@@ -182,13 +186,13 @@ int morphing::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 15;
+        _id -= 16;
     }
     return _id;
 }
