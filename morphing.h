@@ -33,8 +33,8 @@ private slots:
     float slength(QPoint p, QPoint q);
     float getU(QLine pq, QPoint  x);
     float getV(QLine pq, QPoint  x);
-    QPoint perpendicularr(QLine pq, QPoint perp);
-    QPoint getXp(float u, float v, QLine pqp, QPoint x, QPoint xp);
+    QPoint perpendicularr(QLine pq);
+    QPoint getXp(float u, float v, QLine pqp, QPoint x);
 
     void on_pushButton_clicked();
 

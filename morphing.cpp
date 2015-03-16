@@ -138,7 +138,7 @@ void morphing::on_btn_process_clicked()
                     //p_P=lines_destination.at(k).p1();
                     //q_P=lines_destination.at(k).p2();
                     //x_P= p_P + (u*(q_P-p_P))+((v*perpendicular(q_P-p_P))/(qSqrt(qPow(p_P.x()-q_P.x(),2)+qPow(p_P.y()-q_P.y(),2))));
-                    x_P=getXp(u,v,lines_destination.at(k),x,x_P);
+                    x_P=getXp(u,v,lines_destination.at(k),x);
                     Di.setX(x_P.x()-x.x());
                     Di.setY(x_P.y()-x.y());
                     distance=point2LineD(x,lines_source.at(k));
@@ -165,27 +165,29 @@ void morphing::on_btn_process_clicked()
 }
 
 
-
-
 QPoint morphing::perpendicular(QPoint a){
    float x1;
    float x2;
    QPoint x;
-   x2=qSqrt((qPow(a.x(),4)+(qPow(a.x(),2)*qPow(a.y(),2)))/(qPow(a.x(),2)+qPow(a.y(),2)));
-   if (x2==0){
-   x1=(1*a.y()*1)/(1);
+   if((a.x()==0 && a.y()!=0)||(a.x()!=0 && a.y()!=0)){
+       x1=qSqrt((qPow(a.y(),4)+(qPow(a.x(),2)*qPow(a.y(),2)))/(qPow(a.x(),2)+qPow(a.y(),2)));
+       x2=(-1*a.x()*x1)/(a.y());
+       qDebug()<<"a1 = 0";
    }
-   else {
-   x1=(-1*a.y()*x2)/(a.x());
+   else if(a.y()==0 && a.x()!=0){
+       x2=qSqrt((qPow(a.x(),4)+(qPow(a.x(),2)*qPow(a.y(),2)))/(qPow(a.x(),2)+qPow(a.y(),2)));
+       x1=(-1*a.y()*x2)/(a.x());
+       qDebug()<<"a2 = 0";
+
+   }
+   else if (a.y()==0 && a.x()==0){
+      x1=0;
+      x2=0;
    }
    x.setX(x1);
    x.setY(x2);
    return x;
 }
-
-
-
-
 
 void morphing::on_btn_browse_2_clicked()
 {
@@ -213,27 +215,26 @@ void morphing::on_pushButton_2_clicked()
     QPoint x(5,5);
     lines_source<<QLine(QPoint(1,1),QPoint(1,9))<<QLine(QPoint(9,2),QPoint(9,8));
     lines_destination<<QLine(QPoint(1,1),QPoint(1,9))<<QLine(QPoint(3,2),QPoint(9,2));
-    for(int k=0;k<lines_source.count();k++){
-
+    //for(int k=0;k<lines_source.count();k++){
+    int k=1;
     qDebug()<<lines_destination.at(k);
-
     u=getU(lines_source.at(k),x);
-    v=abs(getV(lines_source.at(k),x));
+    v=getV(lines_source.at(k),x);
     qDebug()<<"u="<<u<<"v="<<v;
-    x_P= getXp(u,v,lines_destination.at(k),x,x_P);
+    x_P= getXp(u,v,lines_destination.at(k),x);
+    qDebug()<<x_P;
     Di.setX(x_P.x()-x.x());
     Di.setY(x_P.y()-x.y());
     qDebug()<<"x prime "<<x_P<<"Di="<<Di;
     distance=point2LineD(x,lines_destination.at(k));
     weight=qPow(qPow(lineLength(lines_destination.at(k)),1) / (1+distance),1);
     qDebug()<<weight;
-
     DSUM.setX(DSUM.x()+(Di.x()*weight));
     DSUM.setY(DSUM.y()+(Di.y()*weight));
     weightsum += weight;
     qDebug()<<"DSUM-"<<DSUM<<" weightsum="<< weightsum;
    qDebug()<<"---------------------------------------------------------------";
-    }
+    //}
 
     x_P.setX(x.x() + (DSUM.x()/weightsum));
     x_P.setY(x.y() + (DSUM.y()/weightsum));
@@ -292,31 +293,37 @@ float morphing::getU(QLine pq, QPoint x) {
 
 float morphing::getV(QLine pq, QPoint x) {
   QPoint perp;
-  perp=perpendicularr(pq,perp);
-
+  //perp=perpendicularr(pq);
+  perp=perpendicular(QPoint(pq.p2().x()-pq.p1().x(),pq.p2().y() - pq.p1().y()));
   return ((x.x()-pq.p1().x())*perp.x() + (x.y()-pq.p1().y())*perp.y()) / (lineLength(pq));
 }
 
 
-QPoint morphing::perpendicularr(QLine pq, QPoint perp) {
-  float m;
-  float len = lineLength(pq);
-  float temp =(pq.p2().y() - pq.p1().y());
-  if (temp==0){m=0;}
-  else{
-  m = - (pq.p2().x() - pq.p1().x()) / (float) temp , len ;
-  }
+QPoint morphing::perpendicularr(QLine pq) {
+  QPoint perp;
+  float m = - (pq.p2().x() - pq.p1().x()) /(float) (pq.p2().y() - pq.p1().y()),
+          len = lineLength(pq);
   perp.setY(m*len/sqrt(1+pow(m,2)));
   perp.setX(sqrt(pow(len,2)-pow(perp.y(),2)));
+  qDebug()<<"perper"<<perp;
   return perp;
+
+
+
+
 }
 
-QPoint morphing::getXp(float u, float v, QLine pqp, QPoint x, QPoint xp) {
+QPoint morphing::getXp(float u, float v, QLine pqp, QPoint x) {
   float len = lineLength(pqp);
   QPoint perp;
-  //perp=perpendicularr(QPoint(pqp.p2().x()-pqp.p1().x(),pqp.p2().y() - pqp.p1().y()));
-  perp=perpendicularr(pqp,perp);
-  //qDebug()<<"perper"<<perp;
+  QPoint xp;
+
+  perp=perpendicular(QPoint(pqp.p2().x()-pqp.p1().x(),pqp.p2().y() - pqp.p1().y()));
+  //perp=perpendicularr(pqp);
+  qDebug()<<"qp-pp"<<QPoint(pqp.p2().x()-pqp.p1().x(),pqp.p2().y() - pqp.p1().y());
+  qDebug()<<"perp"<<perp;
+  qDebug()<<"len"<<len;
+  qDebug()<<"len"<<len<<pqp.p1().x()<<pqp.p2().x()-pqp.p1().x()<<u*(pqp.p2().x()-pqp.p1().x())<<(v*(perp.x()))<<(v*(perp.x())) / len;
   xp.setX(pqp.p1().x() + u*(pqp.p2().x()-pqp.p1().x()) + (v*(perp.x())) / len);
   xp.setY(pqp.p1().y() + u*(pqp.p2().y()-pqp.p1().y()) + (v*(perp.y())) / len);
   return xp;
@@ -329,24 +336,24 @@ void morphing::on_pushButton_clicked()
     float u;
     float v;
     QPoint x_P;
+    p=lines_source.at(0).p1();
+    q=lines_source.at(0).p2();
+    p_P=lines_destination.at(0).p1();
+    q_P=lines_destination.at(0).p2();
 
   for(int i=0;i<500;i++){
         for(int j=0;j<500;j++){
-            x.setX(j);
-            x.setY(i);
-            p=lines_source.at(0).p1();
-            q=lines_source.at(0).p2();
-            p_P=lines_destination.at(0).p1();
-            q_P=lines_destination.at(0).p2();
+            x.setX(i);
+            x.setY(j);
             u=getU(lines_source.at(0),x);
             v=getV(lines_source.at(0),x);
-            x_P=getXp(u,v,lines_destination.at(0),x,x_P);
-            morphed.at<cv::Vec3b>(i,j)=destinition.at<cv::Vec3b>(x_P.x(),x_P.y());
+            x_P=getXp(u,v,lines_destination.at(0),x);
             qDebug()<<"X="<<x;
             qDebug()<<"P="<<p<<", Q="<<q;
             qDebug()<<"P_Prime="<<p_P<<", Q_Prime="<<q_P;
             qDebug()<<"u="<<u<<", v="<<v;
             qDebug()<<x <<"-->"<<x_P;
+            morphed.at<cv::Vec3b>(i,j)=destinition.at<cv::Vec3b>(x_P.x(),x_P.y());
         }
     }
     proccessImage();

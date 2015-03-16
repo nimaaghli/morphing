@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'morphing.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.4.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,15 +12,15 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'morphing.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.4.1. It"
+#error "This file was generated using the moc from 5.3.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_morphing_t {
-    QByteArrayData data[31];
-    char stringdata[279];
+    QByteArrayData data[29];
+    char stringdata[271];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -29,38 +29,35 @@ struct qt_meta_stringdata_morphing_t {
     )
 static const qt_meta_stringdata_morphing_t qt_meta_stringdata_morphing = {
     {
-QT_MOC_LITERAL(0, 0, 8), // "morphing"
-QT_MOC_LITERAL(1, 9, 21), // "on_btn_browse_clicked"
-QT_MOC_LITERAL(2, 31, 0), // ""
-QT_MOC_LITERAL(3, 32, 11), // "eventFilter"
-QT_MOC_LITERAL(4, 44, 6), // "someOb"
-QT_MOC_LITERAL(5, 51, 7), // "QEvent*"
-QT_MOC_LITERAL(6, 59, 2), // "ev"
-QT_MOC_LITERAL(7, 62, 13), // "proccessImage"
-QT_MOC_LITERAL(8, 76, 22), // "on_btn_process_clicked"
-QT_MOC_LITERAL(9, 99, 13), // "perpendicular"
-QT_MOC_LITERAL(10, 113, 1), // "p"
-QT_MOC_LITERAL(11, 115, 23), // "on_btn_browse_2_clicked"
-QT_MOC_LITERAL(12, 139, 23), // "on_pushButton_2_clicked"
-QT_MOC_LITERAL(13, 163, 11), // "point2LineD"
-QT_MOC_LITERAL(14, 175, 1), // "x"
-QT_MOC_LITERAL(15, 177, 2), // "pq"
-QT_MOC_LITERAL(16, 180, 10), // "lineLength"
-QT_MOC_LITERAL(17, 191, 1), // "n"
-QT_MOC_LITERAL(18, 193, 6), // "length"
-QT_MOC_LITERAL(19, 200, 1), // "q"
-QT_MOC_LITERAL(20, 202, 7), // "slength"
-QT_MOC_LITERAL(21, 210, 4), // "getU"
-QT_MOC_LITERAL(22, 215, 4), // "getV"
-QT_MOC_LITERAL(23, 220, 14), // "perpendicularr"
-QT_MOC_LITERAL(24, 235, 4), // "perp"
-QT_MOC_LITERAL(25, 240, 5), // "getXp"
-QT_MOC_LITERAL(26, 246, 1), // "u"
-QT_MOC_LITERAL(27, 248, 1), // "v"
-QT_MOC_LITERAL(28, 250, 3), // "pqp"
-QT_MOC_LITERAL(29, 254, 2), // "xp"
-QT_MOC_LITERAL(30, 257, 21) // "on_pushButton_clicked"
-
+QT_MOC_LITERAL(0, 0, 8),
+QT_MOC_LITERAL(1, 9, 21),
+QT_MOC_LITERAL(2, 31, 0),
+QT_MOC_LITERAL(3, 32, 11),
+QT_MOC_LITERAL(4, 44, 6),
+QT_MOC_LITERAL(5, 51, 7),
+QT_MOC_LITERAL(6, 59, 2),
+QT_MOC_LITERAL(7, 62, 13),
+QT_MOC_LITERAL(8, 76, 22),
+QT_MOC_LITERAL(9, 99, 13),
+QT_MOC_LITERAL(10, 113, 1),
+QT_MOC_LITERAL(11, 115, 23),
+QT_MOC_LITERAL(12, 139, 23),
+QT_MOC_LITERAL(13, 163, 11),
+QT_MOC_LITERAL(14, 175, 1),
+QT_MOC_LITERAL(15, 177, 2),
+QT_MOC_LITERAL(16, 180, 10),
+QT_MOC_LITERAL(17, 191, 1),
+QT_MOC_LITERAL(18, 193, 6),
+QT_MOC_LITERAL(19, 200, 1),
+QT_MOC_LITERAL(20, 202, 7),
+QT_MOC_LITERAL(21, 210, 4),
+QT_MOC_LITERAL(22, 215, 4),
+QT_MOC_LITERAL(23, 220, 14),
+QT_MOC_LITERAL(24, 235, 5),
+QT_MOC_LITERAL(25, 241, 1),
+QT_MOC_LITERAL(26, 243, 1),
+QT_MOC_LITERAL(27, 245, 3),
+QT_MOC_LITERAL(28, 249, 21)
     },
     "morphing\0on_btn_browse_clicked\0\0"
     "eventFilter\0someOb\0QEvent*\0ev\0"
@@ -68,8 +65,8 @@ QT_MOC_LITERAL(30, 257, 21) // "on_pushButton_clicked"
     "perpendicular\0p\0on_btn_browse_2_clicked\0"
     "on_pushButton_2_clicked\0point2LineD\0"
     "x\0pq\0lineLength\0n\0length\0q\0slength\0"
-    "getU\0getV\0perpendicularr\0perp\0getXp\0"
-    "u\0v\0pqp\0xp\0on_pushButton_clicked"
+    "getU\0getV\0perpendicularr\0getXp\0u\0v\0"
+    "pqp\0on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -100,9 +97,9 @@ static const uint qt_meta_data_morphing[] = {
       20,    2,  120,    2, 0x08 /* Private */,
       21,    2,  125,    2, 0x08 /* Private */,
       22,    2,  130,    2, 0x08 /* Private */,
-      23,    2,  135,    2, 0x08 /* Private */,
-      25,    5,  140,    2, 0x08 /* Private */,
-      30,    0,  151,    2, 0x08 /* Private */,
+      23,    1,  135,    2, 0x08 /* Private */,
+      24,    4,  138,    2, 0x08 /* Private */,
+      28,    0,  147,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -118,8 +115,8 @@ static const uint qt_meta_data_morphing[] = {
     QMetaType::Float, QMetaType::QPoint, QMetaType::QPoint,   10,   19,
     QMetaType::Float, QMetaType::QLine, QMetaType::QPoint,   15,   14,
     QMetaType::Float, QMetaType::QLine, QMetaType::QPoint,   15,   14,
-    QMetaType::QPoint, QMetaType::QLine, QMetaType::QPoint,   15,   24,
-    QMetaType::QPoint, QMetaType::Float, QMetaType::Float, QMetaType::QLine, QMetaType::QPoint, QMetaType::QPoint,   26,   27,   28,   14,   29,
+    QMetaType::QPoint, QMetaType::QLine,   15,
+    QMetaType::QPoint, QMetaType::Float, QMetaType::Float, QMetaType::QLine, QMetaType::QPoint,   25,   26,   27,   14,
     QMetaType::Void,
 
        0        // eod
@@ -151,9 +148,9 @@ void morphing::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
             if (_a[0]) *reinterpret_cast< float*>(_a[0]) = _r; }  break;
         case 12: { float _r = _t->getV((*reinterpret_cast< QLine(*)>(_a[1])),(*reinterpret_cast< QPoint(*)>(_a[2])));
             if (_a[0]) *reinterpret_cast< float*>(_a[0]) = _r; }  break;
-        case 13: { QPoint _r = _t->perpendicularr((*reinterpret_cast< QLine(*)>(_a[1])),(*reinterpret_cast< QPoint(*)>(_a[2])));
+        case 13: { QPoint _r = _t->perpendicularr((*reinterpret_cast< QLine(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = _r; }  break;
-        case 14: { QPoint _r = _t->getXp((*reinterpret_cast< float(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2])),(*reinterpret_cast< QLine(*)>(_a[3])),(*reinterpret_cast< QPoint(*)>(_a[4])),(*reinterpret_cast< QPoint(*)>(_a[5])));
+        case 14: { QPoint _r = _t->getXp((*reinterpret_cast< float(*)>(_a[1])),(*reinterpret_cast< float(*)>(_a[2])),(*reinterpret_cast< QLine(*)>(_a[3])),(*reinterpret_cast< QPoint(*)>(_a[4])));
             if (_a[0]) *reinterpret_cast< QPoint*>(_a[0]) = _r; }  break;
         case 15: _t->on_pushButton_clicked(); break;
         default: ;
@@ -163,7 +160,7 @@ void morphing::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
 
 const QMetaObject morphing::staticMetaObject = {
     { &QMainWindow::staticMetaObject, qt_meta_stringdata_morphing.data,
-      qt_meta_data_morphing,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+      qt_meta_data_morphing,  qt_static_metacall, 0, 0}
 };
 
 
@@ -174,7 +171,7 @@ const QMetaObject *morphing::metaObject() const
 
 void *morphing::qt_metacast(const char *_clname)
 {
-    if (!_clname) return Q_NULLPTR;
+    if (!_clname) return 0;
     if (!strcmp(_clname, qt_meta_stringdata_morphing.stringdata))
         return static_cast<void*>(const_cast< morphing*>(this));
     return QMainWindow::qt_metacast(_clname);
